@@ -1,0 +1,90 @@
+<body>
+    <!-- navigation  bar-->
+    <nav class="navbar navbar-expand-lg header-logo">
+        <div class="container">
+            <div class="logo-section">
+                <a class="navbar-brand text-white" href="#">
+                    <i class="fas fa-sticky-note" style="padding-right: 5px;"></i>Remind
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="margin-right:15px">
+                <i class="fas fa-bars"></i>
+                <!-- <span class="navbar-toggler-icon"></span> -->
+            </button>
+            <div class="collapse navbar-collapse headbar" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0 me-5">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" aria-current="page" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="#">Pricing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- login box -->
+    <main class="main-div" style="padding:40px 0;">
+        <div class="login-container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <h3 class="login-header">Log in</h3>
+                    <div class="login-box">
+                        <div class="login-box-content">
+                            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                                <div class="mb-3">
+                                    <label for="user_name" class="form-label label">User Name</label>
+                                    <input type="text" name="account_name" class="form-control large" id="user_name"
+                                        formControlName="username">
+                                    <span *ngIf="(this.loginForm.get('username')?.touched|| this.loginForm.get('username')?.dirty)&&
+                                this.loginForm.get('username')?.errors" style="color:red;font-size: 13px;">Invalid User Name </span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="user_password" class="form-label label">Password</label>
+                                    <input type="password" name="account_password" class="form-control large"
+                                        id="user_password" formControlName="pwd">
+                                    <span *ngIf="(this.loginForm.get('pwd')?.touched|| this.loginForm.get('pwd')?.dirty)&&
+                                            this.loginForm.get('pwd')?.errors" style="color:red;font-size: 13px;">Invalid Password
+                                    </span>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label label" for="exampleCheck1">Stay logged in</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary login-btn">Log in</button>
+                            </form>
+                            <div class="divider">
+                                <hr class="seperator left">
+                                <span class="divider-text">OR</span>
+                                <hr class="seperator right">
+                            </div>
+                            <div class="sign-in-google">
+                                <button type="button" class="google-btn">
+                                    <img class="google-img"
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMzAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMDAgMzAwIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNiAxNikiPjxwYXRoIGZpbGw9IiNlYTQzMzUiIGQ9Im0xMzcgNDNjMjcuOSAwIDQ2LjcgMTIgNTcuNCAyMi4xbDQxLjktNDAuOWMtMjUuOC0yMy45LTU5LjMtMzguNi05OS4zLTM4LjYtNTggMC0xMDguMiAzMy4zLTEzMi42IDgxLjhsNDggMzcuM2MxMi0zNS44IDQ1LjMtNjEuNyA4NC42LTYxLjciLz48cGF0aCBmaWxsPSIjNDI4NWY0IiBkPSJtMjc5LjQgMTM3LjNjMC0xMi4yLTEtMjEuMS0zLjEtMzAuM2gtMTM5LjN2NTVoODEuOGMtMS42IDEzLjctMTAuNiAzNC4zLTMwLjMgNDguMWw0Ni44IDM2LjNjMjgtMjUuOCA0NC4xLTYzLjkgNDQuMS0xMDkuMSIvPjxwYXRoIGZpbGw9IiNmYmJjMDUiIGQ9Im01Mi41IDE2My4zYy0zLjEtOS4yLTQuOS0xOS4xLTQuOS0yOS4zczEuOC0yMC4xIDQuOC0yOS4zbC00OC0zNy4zYy0xMC4xIDIwLjEtMTUuOCA0Mi43LTE1LjggNjYuNnM1LjggNDYuNSAxNS44IDY2LjZsNDguMS0zNy4zIi8+PHBhdGggZmlsbD0iIzM0YTg1MyIgZD0ibTEzNyAyODIuNGM0MC4xIDAgNzMuNy0xMy4yIDk4LjMtMzUuOWwtNDYuOC0zNi4zYy0xMi41IDguNy0yOS4zIDE0LjgtNTEuNCAxNC44LTM5LjIgMC03Mi41LTI1LjktODQuNC02MS43bC00OCAzNy4zYzI0LjMgNDguNSA3NC4yIDgxLjggMTMyLjMgODEuOCIvPjwvZz48L3N2Zz4="
+                                        alt="">
+                                    Log in With Google</button>
+                            </div>
+                            <div class="signup-div">
+                                <a routerLink="register">
+                                    <span style="color:#656565;">Don’t have an account?</span>
+                                    Sign up!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </main>
+</body>

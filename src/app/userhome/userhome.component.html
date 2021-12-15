@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-lg header-logo">
+    <div class="container-fluid">
+        <div class="logo-section">
+            <!-- <a class="navbar-brand text-white" href="#">
+                <i class="fas fa-sticky-note" style="padding-right: 5px;"></i>Remind
+            </a> -->
+        </div>
+
+        <div class="headbar" style="width: 100%; text-align: center;">
+            <span class="headbar-text">Welcome</span>
+            <span class="headbar-text" id="customer_name"> {{user}}</span>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation" style="margin-right:15px">
+        </button>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2" style="padding: 0;">
+            <div class="sidebar" style="border-right: 1px solid gray; width: 90%;">
+                <div style="height: 10px;"></div>
+                <div class="side-item-div"><button class="side-item" (click)="myday()"><a>My Day</a></button></div>
+                <div class="side-item-div"><button class="side-item" (click)="add_reminder()"><a>Add Reminder</a></button></div>
+                <div class="side-item-div"><button class="side-item" (click)="view_reminder()"><a>View Reminders</a></button></div>
+                <div class="side-item-div"><button class="side-item" (click)="change_password()"><a>Change Password</a></button></div>
+                <div class="side-item-div"><button class="side-item" (click)="logout()"><a>Logout</a></button></div>
+            </div>
+        </div>
+        <div class="col-10" style="padding: 0;">
+            <div class="main-content" style="margin-top: 20px;">
+
+
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <div id=myday_div *ngIf="div4">
+                            <h3 style="margin-bottom: 20px;">My Day</h3>
+                           
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <div id=add_reminder_div *ngIf="div1">
+                            <h3 style="margin-bottom: 20px;">Add an Event</h3>
+                            <div class="mb-3">
+                                <label for="event_name" class="form-label">Event Name</label>
+                                <input type="text" class="form-control" name="event" id="event_name" [(ngModel)]="event_data">
+                              </div>
+                              <div class="mb-3">
+                                <label for="e_date" class="form-label">Event Date</label>
+                                <input type="date" class="form-control" name="event" id="e_date" [(ngModel)]="event_date">
+                              </div>
+                              <button type="submit" class="btn btn-primary" (click)="add_event()">Add Event</button>
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-9">
+                        <div id=view_reminder_div *ngIf="div2">
+                            <h3 style="margin-bottom: 20px;">Reminders</h3>
+                            <div *ngFor="let r of reminders;let i=index" style="margin-bottom: 20px;">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                      <label  class="col-form-label">Event</label>
+                                    </div>
+                                    <div class="col-auto">
+                                      <input type="text" [formControl]="r.reminderForm.controls.eventForm" class="form-control" >
+                                    </div>
+                                    <div class="col-auto" style="margin-left: 50px;">
+                                        <label class="col-form-label">Date</label>
+                                      </div>
+                                    <div class="col-auto">
+                                        <input type="date" [formControl]="r.reminderForm.controls.dateForm" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-warning" *ngIf="btn1" (click)="edit_event(i)" style="margin-right: 10px;">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="btn2" style="margin-right: 10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="btn3" style="margin-right: 10px;">
+                                            ok
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="btn4" style="margin-right: 10px;">
+                                            cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-9">
+                        <div id=view_reminder_div *ngIf="div2">
+                            <h3 style="margin-bottom: 20px;">Reminders</h3>
+                            <div *ngFor="let r of reminders;let i=index" style="margin-bottom: 20px;">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                      <label  class="col-form-label">Event</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <!-- <h1>{{r.event}}</h1> -->
+                                      <input type="text"  class="form-control" [disabled]="r.isDisabled" [(ngModel)]="r.event">
+                                    </div>
+                                    <div class="col-auto" style="margin-left: 50px;">
+                                        <label class="col-form-label">Date</label>
+                                      </div>
+                                    <div class="col-auto">
+                                        <input type="date" class="form-control" [disabled]="r.isDisabled" [(ngModel)]="r.date">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-warning" *ngIf="r.btn1" (click)="edit_event(i)" style="margin-right: 10px;">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger" (click)="deleteEvent(i)" *ngIf="r.btn2" style="margin-right: 10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        <button class="btn btn-success" *ngIf="r.btn3" (click)="updateEvent(i)" style="margin-right: 10px;">
+                                            <i class="fas fa-check-circle"></i>
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="r.btn4" (click)="cancelEditEvent(i)" style="margin-right: 10px;">
+                                            <i class="fas fa-times-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id=change_password_div *ngIf="div3">
+                    <h1>change reminder</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

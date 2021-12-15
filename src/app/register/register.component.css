@@ -1,0 +1,108 @@
+body{
+    font-size: 14px;
+    line-height: 1.38;
+}
+a{
+    text-decoration: none;
+}
+/* navbar */
+.navbar{
+    background-color: #0274de;
+}
+  
+.navbar-brand{
+    font-family: 'Ubuntu';
+}
+.nav-item{
+    padding: 0 10px;
+}
+.nav-link{
+    font-family: 'Montserrat-Light';
+    font-size: 17px
+}
+
+
+/* login box  */
+.login-container{
+    margin: auto;
+    padding: 0 24px;
+}
+.login-header{
+    margin: 0 0 20px;
+    text-align: center;
+    font-weight: 400;
+}
+.login-box{
+    background-color: #fff;
+    border: 1px solid #e9ebf0;
+    border-radius: 10px;
+    box-shadow: 0 0 5px -1px rgb(0 0 0 / 15%);
+}
+.login-box-content{
+    padding: 40px;
+}
+.label{
+    font-weight: 600;
+}
+.large{
+    padding: 9px;
+}
+.login-btn{
+    width: 100%;
+    padding: 10px 18px;
+    background-color: #0274de;
+}
+
+
+/* horizontal line */
+.divider{
+    clear: both;
+    margin: 16px 0;
+    text-align: center;
+    color: #656565;
+}
+.divider-text{
+    padding: 0 12px;
+    font-weight: 600;
+    font-size: 12px;
+}
+.seperator {
+    width: 42%;
+    display: inline-block;
+}
+  
+.left {
+    float: left;
+}
+.right {
+  float: right;
+}
+
+/* login with google */
+.google-btn{
+    border: 1px solid transparent;
+    border-radius: 3px;
+    width: 100%;
+    background: none;
+    color: #f2f3f5;
+    border-color: #e9ebf0;
+    color: #656565;
+    padding: 9px 18px;
+}
+
+.google-img{
+    width: 20px;
+    float: left;
+    margin: -1px 0 -2px;
+}
+
+/* signin */
+.signin-div{
+    text-align: center;
+}
+.signin-div a{
+    color: #0274de;
+    font-weight: 600;
+    display: inline-block;
+    margin: 28px 0 0;
+}
